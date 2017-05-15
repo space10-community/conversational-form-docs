@@ -74,6 +74,13 @@
 
 					<!-- Conversational Form will auto-run because of attribute "cf-form" -->
 					<form id="form" cf-form>
+						<fieldset cf-questions="Choose an example">
+							<input type="radio" cf-label="Conditional Flow" />
+							<input type="radio" cf-label="Formless" />
+							<input type="radio" cf-label="Add robot response" />
+							<input type="radio" cf-label="Auto form detection" />
+							<input type="radio" cf-label="jQuery" />
+						</fieldset>
 					</form>
 
 				</div>
@@ -99,9 +106,9 @@
 				function initExample(){
 					for(var i = 0; i < examples.length; i++){
 						(function(index) {
-							setTimeout(function() {
-								window.ConversationalForm.addRobotChatResponse(examples[index]);
-							}, i * 2000);
+							// setTimeout(function() {
+							// 	window.ConversationalForm.addRobotChatResponse(examples[index]);
+							// }, i * 2000);
 						})(i);
 					}
 				}
