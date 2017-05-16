@@ -69,17 +69,29 @@
 				</article>
 			</section>
 
+			<script>
+				function examplesChoiceMade(event){
+					event.preventDefault();
+					var file = window.ConversationalForm.getFormData(true)["examples"][0];
+					var cur = window.location.href.split("/")[window.location.href.split("/").length - 1];
+					window.location = window.location.href.split(cur).join(file);
+					return false;
+				}
+			</script>
+
 			<section role="form">
 				<div class="form-outer">
 
 					<!-- Conversational Form will auto-run because of attribute "cf-form" -->
-					<form id="form" cf-form>
-						<fieldset cf-questions="Choose an example">
-							<input type="radio" cf-label="Conditional Flow" />
-							<input type="radio" cf-label="Formless" />
-							<input type="radio" cf-label="Add robot response" />
-							<input type="radio" cf-label="Auto form detection" />
-							<input type="radio" cf-label="jQuery" />
+					<form id="form" cf-form onsubmit="examplesChoiceMade(event)">
+						<fieldset cf-questions="Choose an example" name="examples" id="examples">
+							<input type="radio" value="conditional-flow.html" cf-label="Conditional Flow" />
+							<input type="radio" value="formless.html" cf-label="Formless" />
+							<input type="radio" value="value-piping.html" cf-label="Value piping {value}" />
+							<input type="radio" value="add-robot-response.html" cf-label="Add robot response" />
+							<input type="radio" value="auto-form-detection.html" cf-label="Auto form detection" />
+							<input type="radio" value="image-answers.html" cf-label="Images as answers" />
+							<input type="radio" value="jquery.html" cf-label="Init with jQuery" />
 						</fieldset>
 					</form>
 
@@ -89,30 +101,6 @@
 			<section id="cf-context" role="cf-context" cf-context>
 				
 			</section>
-
-			<script>
-				var examples = [
-					"Try a <strong>Conditional Flow</strong> <a href='conditional-flow.html' target='_self'>here</a>",
-					"<strong>Formless</strong>, all JSON no tags <a href='formless.html' target='_self'>here</a>",
-					"Add robot message <a href='add-robot-message.html' target='_self'>here</a>",
-					"Auto form detection <a href='auto-form-detection.html' target='_self'>here</a>",
-					"Start Conversational Form with <a href='jquery.html' target='_self'>jQuery</a>",
-					"Catch a form <a href='submit-callback.html' target='_self'>submit</a>, and use FormData",
-					"Various tag and form validations <a href='validation.html' target='_self'>here</a>",
-					"<strong>Browser auto fill</strong> in effect <a href='browser-autofill.html' target='_self'>in effect</a>",
-					"<a href='click-edit-previous-answer.html' target='_self'>Edit previous answers</a>",
-					"Use images in checkboxes <a href='image-answers.html' target='_self'>here</a>"
-				];
-				function initExample(){
-					for(var i = 0; i < examples.length; i++){
-						(function(index) {
-							// setTimeout(function() {
-							// 	window.ConversationalForm.addRobotChatResponse(examples[index]);
-							// }, i * 2000);
-						})(i);
-					}
-				}
-			</script>
 		</main>
 	</body>
 </html>
